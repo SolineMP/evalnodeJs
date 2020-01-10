@@ -16,7 +16,6 @@ router.get('/', function (req, res, next) {
   dbConnection(function(db) {
   // Accéder aux tweets 
     findContact(db, function(contacts){
-      console.log(contacts)
       res.render('index', { title: 'Mes contacts', posts: contacts});
     }) 
   });

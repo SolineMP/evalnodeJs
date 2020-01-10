@@ -34,4 +34,13 @@ router.post('/', function (req, res, next) {
     })
 });
 
+router.put('/:id', function(req, res, next) {
+    dbConnection(function(db) {
+        db.collection('person')
+        .updateOne({ _id : new ObjectId(req.params.id)}, {$set: {person: req.body.name}}, {$set: {person: req.body.firstName}}, {$set: {person: req.body.mobile}}, {$set: {person: req.body.domNumber}}, {$set: {person: req.body.email}}, null, function(err) {
+            res.end();
+        })
+    })
+}) 
+
 module.exports = router;

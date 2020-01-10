@@ -58,3 +58,51 @@ if (form) {
         }
     })
 }
+
+const formUpdate = document.getElementById('editContact')
+
+if (formUpdate) {
+    formUpdate.addEventListener('submit', function(event) {
+        event.preventDefault()
+        let name = document.querySelectorAll('input')[0].value
+        let firstName = document.querySelectorAll('input')[1].value
+        let mobile = document.querySelectorAll('input')[2].value
+        let domNumber = document.querySelectorAll('input')[3].value
+        let email = document.querySelectorAll('input')[4].value
+        if (name.length < 2 && name.length > 50) {
+            var oneP = document.createElement("p")
+            oneP.innerHTML = "Non conforme"
+            document.querySelector("form").appendChild(oneP)
+        } else if (firstName.length < 2 && firstName.length > 50) {
+            var oneP = document.createElement("p")
+            oneP.innerHTML = "Non conforme"
+            document.querySelector("form").appendChild(oneP)
+        } else if (mobile.length > 10) {
+            var oneP = document.createElement("p")
+            oneP.innerHTML = "Non conforme"
+            document.querySelector("form").appendChild(oneP)
+        } else if (domNumber.length > 10) {
+            var oneP = document.createElement("p")
+            oneP.innerHTML = "Non conforme"
+            document.querySelector("form").appendChild(oneP)
+        } else if (email.length < 2 && email.length > 100 ) {
+            var oneP = document.createElement("p")
+            oneP.innerHTML = "Non conforme"
+            document.querySelector("form").appendChild(oneP)
+        } else {
+            fetch('', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+            body: JSON.stringify({name, firstName, mobile, domNumber, email})
+            })
+            .then(function(response) {
+                console.log(response)
+                if (response.status === 200) {
+                    location.href = '/'
+                }
+            })
+        }
+    })
+}
