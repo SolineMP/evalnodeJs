@@ -1,0 +1,49 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <div> 
+    <h1>{{title}}</h1>
+  </div>
+
+    <div>
+      <ul> 
+        <li class="card">
+          <form action="" method="POST" id="addContact">
+            <p class="title"> Ajouter un contact: </p>
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Nom(s)" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="firstName" class="form-control" placeholder="Prénom(s)" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" name="mobile" class="form-control" placeholder="Téléphone mobile" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" name="domNumber" class="form-control" placeholder="Téléphone du domicile" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
+            <div id="newInput">
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Envoyer" class="btn btn-primary">
+            </div>
+          </form>
+            <div id="addEmail">
+              <button class="btn btn-info" id="plusInput">+</button>
+            </div>
+        </li> </br>
+        {% for contact in posts | reverse %}
+          <li class="card">
+            <p class="card-title"> {{ contact.name }} </p>
+            <p class="card-title"> {{ contact.firstName }} </p> 
+            <p class="card-header"> Ajouté le : {{ contact.date |date("d/m/Y")  }} à {{ contact.date | date("g:ia") }} </p>
+            <button class="btn btn-secondary active"><a href="/contact/{{contact._id}}">Editer</a></button>
+          </li> </br>
+        {% endfor %}
+      </ul>
+    </div>
+
+{% endblock %}

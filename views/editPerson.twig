@@ -1,0 +1,26 @@
+{% extends 'layout.twig' %}
+{% block body %}
+
+<form action="" method="POST" id="addContact">
+            <p class="title"> Ajouter un contact: </p>
+            <div class="form-group">
+              <input type="text" name="name" class="form-control" placeholder="Nom(s)" value="{{ person.name }}" required>
+            </div>
+            <div class="form-group">
+              <input type="text" name="firstName" class="form-control" placeholder="Prénom(s)" value="{{ person.firstName }}" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" name="mobile" class="form-control" placeholder="Téléphone mobile" value="{{ person.mobile }}" required>
+            </div>
+            <div class="form-group">
+              <input type="tel" name="domNumber" class="form-control" placeholder="Téléphone du domicile" value="{{ person.domNumber }}" required>
+            </div>
+            <div class="form-group">
+              <input type="email" name="email" class="form-control" placeholder="Email" value="{{ person.email }}" required>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Envoyer" class="btn btn-primary">
+            </div>
+          </form>
+
+{% endblock %}
